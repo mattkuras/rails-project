@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     end
 
     def show 
-      @post = Post.all.find_by(id: params[:id]
+      @post = Post.all.find_by(id: params[:id])
     end
 
     private 
