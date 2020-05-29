@@ -21,6 +21,7 @@ class PostsController < ApplicationController
 
     def show 
       @post = Post.all.find_by(id: params[:id])
+      @comments = @post.comments.all 
     end
 
     def destroy

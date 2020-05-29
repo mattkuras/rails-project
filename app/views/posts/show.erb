@@ -6,4 +6,12 @@
 <%= form_for(Comment.new) do |f| %>
 <%= f.label :content, "say something"%>
 <%= f.text_area :content %>
+<%= f.submit "submit comment"%>
+<%end%>
+<br>
+<br>
+<%= @comments.each do |c|%>
+<%= c.content %>
+<br>
+<br>
 <%end%>
