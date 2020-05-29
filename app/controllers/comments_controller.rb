@@ -5,13 +5,19 @@ class CommentsController < ApplicationController
     end
 
     def create 
-        comment = current_user.comments.build(content: params[:content])
+        comment = current_user.comments.build(comment_params)
         comment.save 
+        byebug
         if comment.save 
-            redirect_to(comment_path)
+            redirect_to (comment_path)
         else 
-            redirect_to(comment_path)
+            redirect_to (comment_path)
         end
     end
 
+    private
+
+    def comment_params 
+        params.require(:comment).permit(:content)
+    end
 end
