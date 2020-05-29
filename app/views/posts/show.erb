@@ -1,3 +1,9 @@
 <h3>Post from <%= @post.user.name%></h3>
 <h4><%= @post.content%></h4>
 <%= button_to "Delete Post", post_path(@post), method: :delete %>
+<br>
+<br>
+<%= form_for(Comment.new) do |f| %>
+<%= f.label :content, "say something"%>
+<%= f.text_area :content %>
+<%end%>
