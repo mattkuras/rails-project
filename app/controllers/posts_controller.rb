@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
     def destroy
       post = Post.all.find_by(id: params[:id])
-      post.destroy
+      post.delete
       redirect_to posts_path
     end
 
