@@ -6,6 +6,7 @@
 <%= form_for(Comment.new) do |f| %>
 <%= f.label :content, "say something"%>
 <%= f.text_area :content %>
+<%= f.hidden_field :post_id, value: @post.id%>
 <%= f.submit "submit comment"%>
 <%end%>
 <br>
