@@ -1,8 +1,12 @@
-<%=form_for @identity do |f| %>
+<%=form_for(@identity) do |f| %>
 
 <%= f.label :name, "Musician" %>
 <%= f.check_box :name %>
 <br>
 <br>
 <%= f.label :standard, "How many days a week would you have to play music to feel like a musician?"%>
+<%= f.select :standard, options_for_select([["Select One", ""], "1 Day a Week", "2 Days a Week", "3 Days a Week", "4 Days a Week", "5 Days a Week", "6 Days a Week", "7 Days a Week"]) %>
 <%end%>
+
+
+
