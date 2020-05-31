@@ -5,6 +5,8 @@ class User < ApplicationRecord
     has_many :comments
     has_many :identities    
     belongs_to :community, optional: true
+    has_many :likes, through: :posts 
+
 
     has_many :followers, class_name: "User", foreign_key: "followed_id"
 
