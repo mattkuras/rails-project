@@ -6,11 +6,11 @@ class CommentsController < ApplicationController
 
     def create 
         comment = current_user.comments.build(comment_params)
-        byebug
+
         if comment.save 
-            redirect_to (comment_path)
+            redirect_to post_path(comment.post)
         else 
-            redirect_to (comment_path)
+            redirect_to post_path(comment.post)
         end
     end
 

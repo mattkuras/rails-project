@@ -1,9 +1,11 @@
 class IdentitiesController < ApplicationController
-    def new 
-        @identity = Identity.new 
+    def new
+        @new_identities = []
+        @identities = ['Musician', "Writer", 'Father', 'Mother', 'Athlete', 'Traveler', 'Teacher', 'Artist', 'Cook']
     end
 
     def create
+    byebug
         identity = current_user.identity.build(identity_params)
         identity.save 
         if identity.save 
