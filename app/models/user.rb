@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
     has_many :posts 
     has_many :comments
-    has_many :identities    
-    belongs_to :community, optional: true
+    has_many :identities
+    has_many :communities through: :identities     
     has_many :likes, through: :posts 
 
 

@@ -1,6 +1,6 @@
 class Identity < ApplicationRecord
-    has_many :users 
-    has_one :community 
+    belongs_to :user 
+    belongs_to :community 
 
    
 end
