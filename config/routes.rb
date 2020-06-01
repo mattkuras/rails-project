@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  root 'posts#index'
   get '/identities/new' => 'identities#new'
   post '/identities' => 'identities#create'
   post '/likes' => 'likes#new'
+  get '/login' => 'sessions#new'
+  post 'login' => 'posts#index'
   resources :comments
   resources :communities
   resources :posts
