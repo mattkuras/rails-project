@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         
            if user.save
              session[:user_id] = user.id
-             redirect_to posts_path
+             redirect_to '/identities/new'
            else
             byebug
              render 'new'
