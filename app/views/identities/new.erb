@@ -11,3 +11,11 @@
 <%end%>
 <%=f.submit %>
 <%end%>
+
+
+<%= form_tag "/members" do %>
+  <% 10.times do %>
+    <%= render 'group_member_form' %>     
+  <% end %>
+  <%= submit_tag "Submit" %>
+<% end %>
