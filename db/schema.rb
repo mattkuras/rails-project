@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_202816) do
+ActiveRecord::Schema.define(version: 2020_06_01_163115) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_05_31_202816) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "standard"
+    t.integer "user_id"
+    t.integer "community_id"
   end
 
   create_table "likes", force: :cascade do |t|

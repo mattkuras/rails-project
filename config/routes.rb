@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/identities/new' => 'identities#new'
+  post '/identities' => 'identities#create'
   post '/likes' => 'likes#new'
   resources :comments
   resources :communities
