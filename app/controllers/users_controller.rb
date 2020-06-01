@@ -2,22 +2,23 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new 
+        10.times {@user.identities.build}
+
     end
 
     def create
 
         user = User.create(user_params)
-        user.save
 
-        
            if user.save
              session[:user_id] = user.id
-             redirect_to '/identities/new'
+                byebug
+             redirect_to '/posts'
            else
-            byebug
+    
              render 'new'
            end
-        end
+    end
   
 
 
@@ -29,7 +30,11 @@ class UsersController < ApplicationController
             :password,
             :first_name,
             :last_name,
-            :email
+            :email,
+            identities:[
+                :name,
+                :standard
+            ]
         )
     end
 end
