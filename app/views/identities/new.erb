@@ -1,10 +1,10 @@
 
 <%= form_with url: '/identities' do |f| %>
-<% @identities.each do |i|%>
-<%= f.label :name, "#{i}"%>
+<% @communities.each do |c|%>
+<%= f.label :name, "#{c.name}"%>
 <%= f.check_box :name %>
 <br>
-<%= f.label :standard, "How many days a week would you need to practice to feel like a #{i}?"%>
+<%= f.label :standard, "How many days a week would you need to practice to feel like a #{c.name}?"%>
 <%= f.select :standard, options_for_select([["Select One", ""], "1 Day a Week", "2 Days a Week", "3 Days a Week", "4 Days a Week", "5 Days a Week", "6 Days a Week", "7 Days a Week"]) %>
 <br>
 <br>

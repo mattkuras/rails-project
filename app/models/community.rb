@@ -1,5 +1,5 @@
 class Community < ApplicationRecord
-    has_many :users through: :identity
-    has_one :identity 
+    has_many :users, through: :identities
+    has_many :identities 
 
 end

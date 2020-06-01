@@ -1,10 +1,11 @@
 class IdentitiesController < ApplicationController
     def new
         @new_identities = []
-        9.times do |t|
+        10.times do |t|
         @new_identities << Identity.new
         end
-        @identities = ['Musician', "Writer", 'Father', 'Mother', 'Athlete', 'Traveler', 'Teacher', 'Artist', 'Cook']
+        @communities = Community.all 
+       
     end
 
     def create
