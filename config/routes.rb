@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/likes' => 'likes#new'
   get '/login' => 'sessions#new'
   post 'login' => 'posts#index'
+  get 'logout' => 'sessions#destroy'
   resources :comments
   resources :communities
   resources :posts
