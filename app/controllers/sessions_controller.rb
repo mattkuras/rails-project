@@ -13,8 +13,12 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        if !current_user
+            redirect_to posts_path
+        else
         session.destroy
-        redirect_to '/'
+        redirect_to login_path
+        end
     end
 
 end
