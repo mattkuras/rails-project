@@ -1,12 +1,12 @@
 <h2>Latest Posts </h2>
 <br>
-<%= @posts.each do |p|%>
+<%= @posts.reverse.each do |p|%>
 
-<%=p.user.name%>
-<br>
-<br>
-<%= p.content %>
+<h4><%=p.user.name%> says</h4>
+
+<h3><%= p.content %></h3>
 <%= button_to 'Like', posts_path, method: :post %>
+<%= link_to 'view post', post_path(p)%>
 <br>
 <br>
 <br>
