@@ -2,7 +2,7 @@
 <br>
 <%= @posts.reverse.each do |p|%>
 
-<h4><%=p.user.name%> says</h4>
+<h4><%=link_to p.user.name, user_path(p.user)%> says</h4>
 
 <h3><%= p.content %></h3>
 <%= button_to 'Like', posts_path, method: :post %>
