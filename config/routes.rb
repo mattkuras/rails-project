@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/identities/new' => 'identities#new'
   post '/identities' => 'identities#create'
   post '/likes' => 'likes#new'
-  get '/login' => 'sessions#new'
+  get '/login' => 'sessions#new', as: 'login'
   post 'login' => 'posts#index'
   get 'logout' => 'sessions#destroy'
   resources :comments
