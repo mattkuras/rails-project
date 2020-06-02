@@ -1,19 +1,24 @@
 class UsersController < ApplicationController
 
     def new
+        if !current_user
         @user = User.new 
         10.times {@user.identities.build}
+        else
+            redirect_to posts_path
+        end
 
     end
 
     def create
 
         user = User.new(user_params)
+
+        user.identities.each do |i|
+            i.name = i.community.name 
+        end
         
            if user.save
-            user.identities.each do |i|
-                i.name = i.community.name 
-            end
             
              session[:user_id] = user.id
              redirect_to '/posts'
@@ -21,6 +26,10 @@ class UsersController < ApplicationController
     
              render 'new'
            end
+    end
+
+    def show 
+        @user = User.find_by(id: params[:id])
     end
   
 
@@ -40,4 +49,6 @@ class UsersController < ApplicationController
             ]
         )
     end
+
+    
 end

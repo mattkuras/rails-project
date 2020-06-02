@@ -1,0 +1,16 @@
+<h1><%= @user.name%> </h1>
+<br>
+<%#byebug%>
+<ul>
+    <%@user.identities.each do |i|%>
+    <li><%=i.name%></li>
+    <br>
+    <% end %>
+</ul>
+<br>
+<% @user.posts.each do |p|%>
+<%= p.last_updated %>
+<h3><%= p.content %></h3>
+<br>
+<br>
+<% end %>

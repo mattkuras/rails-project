@@ -19,15 +19,9 @@ class User < ApplicationRecord
         self.first_name + " " + self.last_name
     end
 
-    # def identities_attributes=(id_attr)
-    #     id_attr.each do |a|
-    #         a.each do |b|
-
-    #         byebug
-    #         if a["community_id"] != "" && a["standard"] != ""
-    #             self.identities.build(a)
-    #         end
-    #     end
-    # end
-    
+    def save_id_name 
+        user.identities.each do |i|
+            i.name = i.community.name 
+        end
+    end
 end
