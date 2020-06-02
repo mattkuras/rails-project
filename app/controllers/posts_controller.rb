@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     def show 
       @post = Post.all.find_by(id: params[:id])
       @comments = @post.comments.all
-      @current_user == current_user
+      @current_user = current_user
     end
 
     def destroy
