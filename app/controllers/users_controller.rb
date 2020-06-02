@@ -8,9 +8,13 @@ class UsersController < ApplicationController
 
     def create
 
-        user = User.create(user_params)
-
+        user = User.new(user_params)
+        
            if user.save
+            user.identities.each do |i|
+                i.name = i.community.name 
+            end
+            
              session[:user_id] = user.id
              redirect_to '/posts'
            else
@@ -30,8 +34,8 @@ class UsersController < ApplicationController
             :first_name,
             :last_name,
             :email,
-            identities:[
-                :name,
+            identities_attributes:[
+                :community_id,
                 :standard
             ]
         )
