@@ -9,7 +9,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body> 
+  <p> <%= link_to "logout", '/logout' %>  
+  <p> <%= link_to "home", '/' %>
+
+  
+  <%= yield %> 
+
   </body>
 </html>
