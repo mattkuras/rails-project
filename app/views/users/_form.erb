@@ -1,4 +1,4 @@
-<%= form_for(User.new) do |f| %>
+<%= form_for @user do |f| %>
 
     <%= f.label :first_name, 'First Name'%>
     <%= f.text_field :first_name%>
@@ -13,12 +13,16 @@
     <%= f.text_field :password%>
     <br>
     <br>
-    <%= fields_for :identities do |i|%>
-    <%= i.collection_select :name, Community.all, :name, :name,  {:multiple => true}%>
+    <p>Select up to 10 titles that you identify with or would like to identify with.</p> <br>
+    <%= f.fields_for :identities do |i|%>
+    <%= i.collection_select :community_id, Community.all, :id, :name,  {:multiple => true}%>
+    <br>
     <br>
     <%= i.label :standard, "How many days a week would you need to practice to feel like?"%>
     <%= i.select :standard, options_for_select([["Select One", ""], "1 Day a Week", "2 Days a Week", "3 Days a Week", "4 Days a Week", "5 Days a Week", "6 Days a Week", "7 Days a Week"]) %>
-    
+     <br>
+     <br>
+     <% end %>
     <%= f.submit %>
-    <% end %>
+   
 <% end %>
