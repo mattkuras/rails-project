@@ -1,4 +1,9 @@
 <h2>Latest Posts </h2>
+<ul>
+<%= @user.identities.each do |i|%>
+<li><%= link_to i.community.name, community_path %></li>
+<% end %>
+</ul>
 <br>
 <%= @posts.reverse.each do |p|%>
 
