@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
 
     def index 
+      
       if params[:community_id] 
-        @posts = Community.find(params[:community_id]).posts
+        
+        @posts = Community.find_by(id: params[:community_id]).posts
       else
         @posts = Post.all 
         @user = current_user
