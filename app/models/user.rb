@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+    # validates :first_name, presence: true, length: { minimum: 2 }
+    # validates :first_name, presence: true, length: { minimum: 2 }
+    # validates :password, length: { in: 6..20 }
+    # validates :email, presence: true, uniqueness: true#, message: "that email has already been used"
+
     has_secure_password
     has_many :posts 
     has_many :comments
