@@ -1,7 +1,8 @@
 <h2>Latest Posts </h2>
 <ul>
-<%= @user.identities.each do |i|%>
-<li><%= link_to i.community.name, '/communities/:id' %></li>
+<% @user.identities.each do |i|%>
+<%id = i.community_id%>
+<li><%= link_to i.community.name, community_path(id) %></li>
 <br>
 <% end %>
 </ul>
