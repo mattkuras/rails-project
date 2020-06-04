@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
 
     def index 
-  
+      @like = Like.new
       if params[:community_id] 
         
         @posts = Community.find_by(id: params[:community_id]).posts
       else
-        @posts = Post.all 
+        @posts = Post.all.reg_posts
         @user = current_user
       end
     end
@@ -19,15 +19,16 @@ class PostsController < ApplicationController
     def create
         
         @post = current_user.posts.build(post_params)
-  
+
       if @post.save
-        redirect_to posts_path
+          redirect_to posts_path 
       else
         render :new
       end
     end
 
     def show 
+#      if com_params? 
       @post = Post.all.find_by(id: params[:id])
       @comments = @post.comments.all
       @current_user = current_user

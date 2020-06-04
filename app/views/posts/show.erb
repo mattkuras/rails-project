@@ -15,7 +15,8 @@
 <%end%>
 <br>
 <br>
-<%= @comments.each do |c|%>
+<% @comments.each do |c|%>
+<strong><%= c.user.name %> says</strong>
 <%= c.content %>
 <br>
 <br>

@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes 
   
-  scope :community_posts, -> {where(community_id: params[:community_id])}
+  scope :reg_posts, -> {where(community_id: nil)}
   #Community.find_by(id: params[:community_id]).posts
 
   def last_updated 
@@ -15,7 +15,3 @@ class Post < ApplicationRecord
   end
 end
 
-class Article < ApplicationRecord
-  scope :published,               -> { where(published: true) }
-  scope :published_and_commented, -> { published.where("comments_count > 0") }
-end

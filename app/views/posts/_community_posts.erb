@@ -1,0 +1,21 @@
+<%= link_to "make a new post", new_community_post_path %>
+<br>
+<br>
+<% @posts.reverse.each do |p|%>
+
+<h4><%=link_to p.user.name, user_path(p.user)%> says</h4>
+
+<h3><%= p.content %></h3>
+<%= form_for(Like.new) do |f| %>
+<%= f.hidden_field(:user_id, :value => p.user.id)%>
+<%= f.hidden_field(:post_id, :value => p.id)%>
+<%= f.submit 'like'%>
+<% end %>
+<%= link_to community_post_path(p)%>
+
+
+<br>
+<br>
+<br>
+<br>
+<%end%>

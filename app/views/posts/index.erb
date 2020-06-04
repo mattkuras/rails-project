@@ -10,33 +10,35 @@
 <%end %>
 <br>
 <br>
-<br>
-<br>
+
+
+<h1>Latest Posts </h1>
 
 <% if com_params?%>
-<%= link_to "make a new post", new_community_post_path %>
+<%= render 'community_posts'%>
 <% else %>
 <%= link_to "make a new post", new_post_path %>
-<% end %>
 <br>
-<br>
-<h1>Latest Posts </h1>
 <br>
 <% @posts.reverse.each do |p|%>
 
 <h4><%=link_to p.user.name, user_path(p.user)%> says</h4>
 
 <h3><%= p.content %></h3>
-<%= button_to 'Like', posts_path, method: :post %>
-<% if com_params?%>
-<%= link_to 'view post', community_posts_path(p)%>
-<% else %>
-<%= link_to 'view post', post_path(p)%>
+<%= form_for @like do |f| %>
+<%= f.hidden_field(:user_id, :value => @user.id)%>
+<%= f.hidden_field(:post_id, :value => p.id)%>
+<%= f.submit 'like'%>
 <% end %>
+
+
+<%= link_to 'view post', post_path(p)%>
+
 <br>
 <br>
 <br>
 <br>
+<% end %>
 <%end%>
 
 

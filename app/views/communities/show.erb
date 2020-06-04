@@ -1,3 +1,15 @@
 <h1>Welcome <%= @community.name %>s</h1>
 <%id = @community.id%>
 <h3><%=link_to "see the posts", community_posts_path(id) %> </h3>
+
+<br>
+<br>
+
+<h2>Memebers of your community:</h2>
+<%@community.identities.each do |i|%>
+
+<%= i.user.name %> - 
+<%= i.standard%>
+<br>
+<br>
+<% end %>
