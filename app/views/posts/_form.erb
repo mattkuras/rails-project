@@ -1,4 +1,19 @@
+
 <%= form_for(Post.new) do |f| %>
+    <%  if com_params?%>
+    <%= hidden_field_tag :commmunity_id, params[:commmunity_id]%>
+    
+    <% end %>
+    <%= f.label :content, 'Whats on your mind?'%>
+    <%= f.text_area :content%>
+    <%= f.submit %>
+<% end %>
+
+<%= form_for(Community.find_by(id: params[:id]).posts.build do |f| %>
+    <%  if com_params?%>
+    <%= hidden_field_tag :commmunity_id, params[:commmunity_id]%>
+    
+    <% end %>
     <%= f.label :content, 'Whats on your mind?'%>
     <%= f.text_area :content%>
     <%= f.submit %>
