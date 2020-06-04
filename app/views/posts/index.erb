@@ -1,4 +1,4 @@
-<h2>Latest Posts </h2>
+
 <%if @user%>
     <ul>
     <% @user.identities.each do |i|%>
@@ -9,20 +9,30 @@
     </ul>
 <%end %>
 <br>
+<br>
+<br>
+<br>
 
 <% if com_params?%>
 <%= link_to "make a new post", '/communities/:id/posts/new' %>
 <% else %>
 <%= link_to "make a new post", new_post_path %>
 <% end %>
-
-<%= @posts.reverse.each do |p|%>
+<br>
+<br>
+<h1>Latest Posts </h1>
+<br>
+<% @posts.reverse.each do |p|%>
 
 <h4><%=link_to p.user.name, user_path(p.user)%> says</h4>
 
 <h3><%= p.content %></h3>
 <%= button_to 'Like', posts_path, method: :post %>
+<% if com_params?%>
+<%= link_to 'view post', community_posts_path(p)%>
+<% else %>
 <%= link_to 'view post', post_path(p)%>
+<% end %>
 <br>
 <br>
 <br>
