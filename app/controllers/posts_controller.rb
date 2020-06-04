@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
 
     def index 
-      
+  
       if params[:community_id] 
         
-        @posts = Community.find_by(id: params[:community_id]).posts
+        @posts = Post.community_posts
       else
         @posts = Post.all 
         @user = current_user
@@ -13,7 +13,11 @@ class PostsController < ApplicationController
     
 
     def new 
-        @post = Post.new 
+      if params[:community_id]
+        @post = Community.find_by(params[:id]).posts.build
+      else
+        @post = Post.new
+      end 
     end
 
     def create

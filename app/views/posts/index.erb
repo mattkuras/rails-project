@@ -14,7 +14,7 @@
 <br>
 
 <% if com_params?%>
-<%= link_to "make a new post", '/communities/:id/posts/new' %>
+<%= link_to "make a new post", new_community_post_path %>
 <% else %>
 <%= link_to "make a new post", new_post_path %>
 <% end %>
