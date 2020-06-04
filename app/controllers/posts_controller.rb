@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   
       if params[:community_id] 
         
-        @posts = Post.community_posts
+        @posts = Community.find_by(id: params[:community_id]).posts
       else
         @posts = Post.all 
         @user = current_user
@@ -13,17 +13,13 @@ class PostsController < ApplicationController
     
 
     def new 
-      if params[:community_id]
-        @post = Community.find_by(params[:id]).posts.build
-      else
-        @post = Post.new
-      end 
+        @post = Post.new 
     end
 
     def create
-        byebug
+        
         @post = current_user.posts.build(post_params)
-
+  
       if @post.save
         redirect_to posts_path
       else
@@ -48,6 +44,8 @@ class PostsController < ApplicationController
     def post_params 
         params.require(:post).permit(
           :content,
-          :user_id)
+          :user_id,
+          :community_id
+        )
     end
 end

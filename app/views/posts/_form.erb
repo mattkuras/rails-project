@@ -6,11 +6,12 @@
 <% end %>
 
 <%else%>
-
-<%= form_for @post do |f| %>
-<%byebug%>
+<%= form_for(Post.new) do |f| %>
+    <%= f.hidden_field(:community_id, :value => params[:community_id])%>
     <%= f.label :content, 'Whats on your mind?'%>
     <%= f.text_area :content%>
     <%= f.submit %>
 <% end %>
 <% end %>
+
+hidden_field(:object, :field, :value => params[:requestval])
