@@ -32,6 +32,21 @@ class UsersController < ApplicationController
     def show 
         @user = User.find_by(id: params[:id])
     end
+
+    def edit
+        @user = User.all.find_by(id: params[:id])
+        5.times {@user.identities.build}
+    end
+
+    def update 
+        @user = User.find_by(id: params[:id])
+        @user.identities.each do |i|
+            i.name = i.community.name 
+        end
+        @user.update(user_params)
+        redirect_to posts_path
+    end
+
   
 
 
