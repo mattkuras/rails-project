@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'posts#index'
   get '/identities/new' => 'identities#new'
   post '/identities' => 'identities#create'
-  post '/likes' => 'likes#new'
+  post '/likes' => 'likes#create'
   get '/login' => 'sessions#new', as: 'login'
   get '/auth/facebook/callback' => 'sessions#create'
   post '/login' => 'sessions#create'
