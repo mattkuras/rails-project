@@ -1,5 +1,14 @@
+<br>
+<br>
 <h3>Post from <%= @post.user.name%></h3>
-<h4><%= @post.content%></h4>
+<h2><%= @post.content%></h2>
+
+<%= form_for @like do |f| %>
+<%= f.hidden_field(:user_id, :value => @current_user.id)%>
+<%= f.hidden_field(:post_id, :value => @post.id)%>
+<%= @post.likes.count%> <%= link_to "likes", post_likes_path(@post) %> 
+<%= f.submit 'like'%>
+<% end %>
 
 <% if @current_user == @post.user %>
 

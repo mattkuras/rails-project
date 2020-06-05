@@ -39,9 +39,9 @@ class PostsController < ApplicationController
   end
 
   def show 
-#      if com_params? 
     @post = Post.all.find_by(id: params[:id])
-    @comments = @post.comments.all
+    @like = Like.new
+    @comments = @post.comments.all if @post
     @comment = Comment.new
     @current_user = current_user
   end

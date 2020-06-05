@@ -1,28 +1,36 @@
 class LikesController < ApplicationController
     
-    def new 
-      @like = Like.new
-    end
+  def new 
+    @like = Like.new
+  end
 
-    def create
-      @post = Post.find_by(params[:post_id])
-      @like = @post.likes.build(like_params)
+  def create
+    @post = Post.find_by(id: params[:like][:post_id])
+    if @post.likes.any? {|like| like.user.id == current_user.id}
+      redirect_to posts_path 
+    else
+
+    @like = @post.likes.build(like_params)
       if @like.save
-        redirect_to post_path(@post)
+        if !params[:post_id]
+        redirect_to posts_path
+        else 
+          redirect_to post_path(@post)
+        end
       else
         redirect_to posts_path
-      end  
-   end
-
-   private
-
-   def like_params
-    params.require(:like).permit(:user_id, :post_id)
-   end
-   
-    def find_post
-      
-      
+      end
     end
+  end
+
+  def index
+    @post = Post.find_by(id: params[:post_id])
+  end
+
+  private
+
+  def like_params
+    params.require(:like).permit(:user_id, :post_id)
+  end
 
  end

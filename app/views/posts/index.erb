@@ -27,11 +27,15 @@
 <h4><%=link_to p.user.name, user_path(p.user)%> says</h4>
 
 <h3><%= p.content %></h3>
+
+
 <%= form_for @like do |f| %>
 <%= f.hidden_field(:user_id, :value => @user.id)%>
 <%= f.hidden_field(:post_id, :value => p.id)%>
+<%= p.likes.count%> <%= link_to "likes", post_likes_path(p) %> 
 <%= f.submit 'like'%>
 <% end %>
+
 
 
 <%= link_to 'view post', post_path(p)%>

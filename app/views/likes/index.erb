@@ -1,0 +1,7 @@
+<h2>Users who liked <%=@post.user.name%>'s post</h2>
+<br>
+<% @post.likes.each do |l|%>
+<ul>
+<li><h3><%= l.user.name %></h3></li>
+</ul>
+<% end %>
