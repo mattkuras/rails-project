@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/identities' => 'identities#create'
   post '/likes' => 'likes#new'
   get '/login' => 'sessions#new', as: 'login'
+  get '/auth/facebook/callback' => 'sessions#create'
   post '/login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
   resources :communities, only: [:show] do 
