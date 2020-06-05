@@ -42,6 +42,7 @@ class PostsController < ApplicationController
 #      if com_params? 
     @post = Post.all.find_by(id: params[:id])
     @comments = @post.comments.all
+    @comment = Comment.new
     @current_user = current_user
   end
 
