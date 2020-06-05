@@ -1,11 +1,11 @@
 class LikesController < ApplicationController
-    before_action :find_post
-
+    
     def new 
       @like = Like.new
     end
 
     def create
+      @post = Post.find_by(params[:post_id])
       @post.likes.build(like_params)
       byebug
       if @post.save
@@ -23,7 +23,7 @@ class LikesController < ApplicationController
    
     def find_post
       
-      @post = Post.find_by(params[:post_id])
+      
     end
 
  end
