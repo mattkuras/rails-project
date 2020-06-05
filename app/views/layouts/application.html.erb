@@ -16,8 +16,9 @@
   <p> <%= link_to "logout", '/logout' %>  
   
  <p> <%= link_to "home", '/' %>
-
-  
+<% if !!current_user %>
+ <p> <%= link_to "profile", user_path(current_user) %>
+<%end%>
   <%= yield %> 
 
   </body>
