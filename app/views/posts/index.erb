@@ -9,7 +9,7 @@
     </ul>
 <%end %>
 <br>
-<br>
+
 
 
 <h1>Latest Posts </h1>
@@ -18,6 +18,8 @@
 <%= render 'community_posts'%>
 <% else %>
 <%= link_to "make a new post", new_post_path %>
+<br>
+<br>
 <br>
 <br>
 <% @posts.reverse.each do |p|%>
