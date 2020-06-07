@@ -12,7 +12,8 @@ class LikesController < ApplicationController
 
     @like = @post.likes.build(like_params)
       if @like.save
-        if !params[:post_id]
+        
+        if !params[:like][:post_id]
         redirect_to posts_path
         else 
           redirect_to post_path(@post)
