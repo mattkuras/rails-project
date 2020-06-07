@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_login
+  
   def show 
     #     if com_params? 
         @post = Post.all.find_by(id: params[:id])
@@ -27,8 +29,10 @@ class PostsController < ApplicationController
       @post = current_user.posts.build(post_params)
 
       if @post.save
-        if params[:community_id]
-          redirect_to community_posts_path
+        
+        if params[:post][:community_id]
+         # byebug
+          redirect_to community_posts_path(params[:post][:community_id])
         else
 
           redirect_to posts_path 
@@ -60,6 +64,12 @@ class PostsController < ApplicationController
           :user_id,
           :community_id
         )
+  end
+
+  def require_login
+    unless session.include? :user_id
+      redirect_to login_path
+    end
   end
 
 end
