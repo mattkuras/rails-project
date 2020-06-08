@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/likes' => 'likes#create'
   get '/login' => 'sessions#new', as: 'login'
   get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/failure', to: redirect('/')
+
   post '/login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
   resources :communities, only: [:show] do 

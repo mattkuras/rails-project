@@ -26,5 +26,21 @@ class User < ApplicationRecord
         self.first_name + " " + self.last_name
     end
 
+    def self.create_with_omniauth(auth)
+  
+        user = find_or_create_by(uid: auth['uid'], provider:  auth['provider'])
+
+        user.email = "#{auth['uid']}@#{auth['provider']}.com"
+        user.password = auth['uid']
+        user.first_name = auth['info']['first_name']
+        user.last_name = auth['info']['last_name']
+
+        if User.exists?(user.id)
+          user
+        else
+          user.save!
+          user
+        end
+      end
     
 end
