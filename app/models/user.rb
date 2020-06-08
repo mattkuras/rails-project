@@ -10,12 +10,10 @@ class User < ApplicationRecord
     accepts_nested_attributes_for :identities, reject_if: proc { |attributes| attributes ['standard'].blank?}
     accepts_nested_attributes_for :communities
 
-    has_many :likes, through: :posts 
+    has_many :likes
 
 
-    has_many :followers, class_name: "User", foreign_key: "followed_id"
-
-    belongs_to :followed, class_name: "User", optional: true
+  
 
     validates :first_name, presence: true, length: { minimum: 2 }
     validates :last_name, presence: true, length: { minimum: 2 }
