@@ -33,8 +33,20 @@ class User < ApplicationRecord
           user.first_name = auth['info']['first_name']
           user.last_name = auth['info']['last_name']
         end 
-        
         user 
+    end
+
+    def self.search(search)
+      if search
+        user = User.find_by(first_name: search)
+        if user
+          self.where(first_name: user[:first_name])
+        else
+          User.all 
+        end
+      else
+        User.all
+      end
     end
     
 end

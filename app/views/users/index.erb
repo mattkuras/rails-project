@@ -1,0 +1,10 @@
+<h2>All Users</h2>
+
+<%= form_tag(users_path, method: :get) do %>
+<%= text_field_tag(:search, params[:search]) %>
+<%= submit_tag ("Search")%>
+<% end %>
+
+<%@users.each do |user|%>
+<h3><%= link_to user.name, user_path(user) %></h3>
+<% end %>

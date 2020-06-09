@@ -7,7 +7,10 @@ class UsersController < ApplicationController
         else
             redirect_to posts_path
         end
+    end
 
+    def index
+        @users = User.search(params[:search])
     end
 
     def create
@@ -59,6 +62,7 @@ class UsersController < ApplicationController
             :first_name,
             :last_name,
             :email,
+            :search,
             identities_attributes:[
                 :community_id,
                 :standard
