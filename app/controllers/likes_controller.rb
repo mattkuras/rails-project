@@ -7,6 +7,7 @@ class LikesController < ApplicationController
   def create
     @post = Post.find_by(id: params[:like][:post_id])
     if @post.likes.any? {|like| like.user.id == current_user.id}
+      
       redirect_to posts_path 
     else
 
@@ -34,4 +35,4 @@ class LikesController < ApplicationController
     params.require(:like).permit(:user_id, :post_id)
   end
 
- end
+  

@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
     validates :first_name, presence: true, length: { minimum: 2 }
     validates :last_name, presence: true, length: { minimum: 2 }
-    validates :password, length: { in: 6..20 }
+    validates :password, length: { minimum: 6 }
     validates :email, presence: true, uniqueness: true#, message: "that email has already been used"
 
     def name 
@@ -26,19 +26,15 @@ class User < ApplicationRecord
 
     def self.create_with_omniauth(auth)
   
-        user = find_or_create_by(uid: auth['uid'], provider:  auth['provider'])
+        user = find_or_create_by(email: auth['info']['email']) do |user|
 
-        user.email = "#{auth['uid']}@#{auth['provider']}.com"
-        user.password = auth['uid']
-        user.first_name = auth['info']['first_name']
-        user.last_name = auth['info']['last_name']
-
-        if User.exists?(user.id)
-          user
-        else
-          user.save!
-          user
-        end
-      end
+          user.email = auth['info']['email']
+          user.password = SecureRandom.hex
+          user.first_name = auth['info']['first_name']
+          user.last_name = auth['info']['last_name']
+        end 
+        
+        user 
+    end
     
 end
