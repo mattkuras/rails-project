@@ -36,17 +36,10 @@ class User < ApplicationRecord
         user 
     end
 
-    def self.search(search)
-      if search
-        user = User.find_by(first_name: search)
-        if user
-          self.where(first_name: user[:first_name])
-        else
-          User.all 
-        end
-      else
-        User.all
-      end
+    def self.search(name)
+     
+       User.where("first_name like ?", "%#{name}%")
+
     end
     
 end

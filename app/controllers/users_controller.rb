@@ -10,7 +10,12 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.search(params[:search])
+        if params[:search]
+            @users = User.search(params[:search])
+        
+        else
+            @users = User.all
+        end
     end
 
     def create
